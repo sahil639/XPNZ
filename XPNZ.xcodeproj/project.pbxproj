@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E00000000000000000000001 /* XPNZApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000011 /* XPNZApp.swift */; };
+		E00000000000000000000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000012 /* ContentView.swift */; };
+		E00000000000000000000003 /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000013 /* TimeFrame.swift */; };
+		E00000000000000000000004 /* SpendData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000014 /* SpendData.swift */; };
+		E00000000000000000000005 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000015 /* Currency.swift */; };
+		E00000000000000000000006 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000016 /* HomeView.swift */; };
+		E00000000000000000000007 /* CalendarDateIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000017 /* CalendarDateIcon.swift */; };
+		E00000000000000000000008 /* AddTimeFrameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000018 /* AddTimeFrameButton.swift */; };
+		E00000000000000000000009 /* SpendValueRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000019 /* SpendValueRow.swift */; };
+		E0000000000000000000000A /* TimeFrameSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0000000000000000000001A /* TimeFrameSheet.swift */; };
+		E0000000000000000000000B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0000000000000000000001B /* Assets.xcassets */; };
+		E0000000000000000000000C /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0000000000000000000001C /* Transaction.swift */; };
+		E0000000000000000000000D /* TransactionRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0000000000000000000001D /* TransactionRow.swift */; };
+		E0000000000000000000000E /* CategoryTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0000000000000000000001E /* CategoryTabBar.swift */; };
+		E0000000000000000000000F /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0000000000000000000001F /* TransactionListView.swift */; };
+		E00000000000000000000100 /* ExpandedSpendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000110 /* ExpandedSpendCard.swift */; };
+		E00000000000000000000101 /* HeaderIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000111 /* HeaderIconsView.swift */; };
+		E00000000000000000000102 /* SaveToSpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000112 /* SaveToSpendView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E00000000000000000000010 /* XPNZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XPNZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E00000000000000000000011 /* XPNZApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XPNZApp.swift; sourceTree = "<group>"; };
+		E00000000000000000000012 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E00000000000000000000013 /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		E00000000000000000000014 /* SpendData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendData.swift; sourceTree = "<group>"; };
+		E00000000000000000000015 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		E00000000000000000000016 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		E00000000000000000000017 /* CalendarDateIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateIcon.swift; sourceTree = "<group>"; };
+		E00000000000000000000018 /* AddTimeFrameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeFrameButton.swift; sourceTree = "<group>"; };
+		E00000000000000000000019 /* SpendValueRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendValueRow.swift; sourceTree = "<group>"; };
+		E0000000000000000000001A /* TimeFrameSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrameSheet.swift; sourceTree = "<group>"; };
+		E0000000000000000000001B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E0000000000000000000001C /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		E0000000000000000000001D /* TransactionRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionRow.swift; sourceTree = "<group>"; };
+		E0000000000000000000001E /* CategoryTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabBar.swift; sourceTree = "<group>"; };
+		E0000000000000000000001F /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		E00000000000000000000110 /* ExpandedSpendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedSpendCard.swift; sourceTree = "<group>"; };
+		E00000000000000000000111 /* HeaderIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderIconsView.swift; sourceTree = "<group>"; };
+		E00000000000000000000112 /* SaveToSpendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToSpendView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E00000000000000000000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E00000000000000000000030 = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000031 /* XPNZ */,
+				E00000000000000000000032 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E00000000000000000000031 /* XPNZ */ = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000011 /* XPNZApp.swift */,
+				E00000000000000000000012 /* ContentView.swift */,
+				E00000000000000000000033 /* Models */,
+				E00000000000000000000034 /* Views */,
+				E0000000000000000000001B /* Assets.xcassets */,
+			);
+			path = XPNZ;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000032 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000010 /* XPNZ.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000033 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000013 /* TimeFrame.swift */,
+				E00000000000000000000014 /* SpendData.swift */,
+				E00000000000000000000015 /* Currency.swift */,
+				E0000000000000000000001C /* Transaction.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000034 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000016 /* HomeView.swift */,
+				E00000000000000000000112 /* SaveToSpendView.swift */,
+				E00000000000000000000035 /* Components */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E00000000000000000000035 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				E00000000000000000000017 /* CalendarDateIcon.swift */,
+				E00000000000000000000018 /* AddTimeFrameButton.swift */,
+				E00000000000000000000019 /* SpendValueRow.swift */,
+				E0000000000000000000001A /* TimeFrameSheet.swift */,
+				E0000000000000000000001D /* TransactionRow.swift */,
+				E0000000000000000000001E /* CategoryTabBar.swift */,
+				E0000000000000000000001F /* TransactionListView.swift */,
+				E00000000000000000000110 /* ExpandedSpendCard.swift */,
+				E00000000000000000000111 /* HeaderIconsView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E00000000000000000000040 /* XPNZ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E00000000000000000000060 /* Build configuration list for PBXNativeTarget "XPNZ" */;
+			buildPhases = (
+				E00000000000000000000041 /* Sources */,
+				E00000000000000000000020 /* Frameworks */,
+				E00000000000000000000042 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XPNZ;
+			productName = XPNZ;
+			productReference = E00000000000000000000010 /* XPNZ.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E00000000000000000000050 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					E00000000000000000000040 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = E00000000000000000000051 /* Build configuration list for PBXProject "XPNZ" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E00000000000000000000030;
+			productRefGroup = E00000000000000000000032 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E00000000000000000000040 /* XPNZ */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E00000000000000000000042 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E0000000000000000000000B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E00000000000000000000041 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E00000000000000000000001 /* XPNZApp.swift in Sources */,
+				E00000000000000000000002 /* ContentView.swift in Sources */,
+				E00000000000000000000003 /* TimeFrame.swift in Sources */,
+				E00000000000000000000004 /* SpendData.swift in Sources */,
+				E00000000000000000000005 /* Currency.swift in Sources */,
+				E00000000000000000000006 /* HomeView.swift in Sources */,
+				E00000000000000000000102 /* SaveToSpendView.swift in Sources */,
+				E00000000000000000000007 /* CalendarDateIcon.swift in Sources */,
+				E00000000000000000000008 /* AddTimeFrameButton.swift in Sources */,
+				E00000000000000000000009 /* SpendValueRow.swift in Sources */,
+				E0000000000000000000000A /* TimeFrameSheet.swift in Sources */,
+				E0000000000000000000000C /* Transaction.swift in Sources */,
+				E0000000000000000000000D /* TransactionRow.swift in Sources */,
+				E0000000000000000000000E /* CategoryTabBar.swift in Sources */,
+				E0000000000000000000000F /* TransactionListView.swift in Sources */,
+				E00000000000000000000100 /* ExpandedSpendCard.swift in Sources */,
+				E00000000000000000000101 /* HeaderIconsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E00000000000000000000052 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E00000000000000000000053 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E00000000000000000000061 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xpnz.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E00000000000000000000062 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.xpnz.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E00000000000000000000051 /* Build configuration list for PBXProject "XPNZ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E00000000000000000000052 /* Debug */,
+				E00000000000000000000053 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E00000000000000000000060 /* Build configuration list for PBXNativeTarget "XPNZ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E00000000000000000000061 /* Debug */,
+				E00000000000000000000062 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E00000000000000000000050 /* Project object */;
+}
