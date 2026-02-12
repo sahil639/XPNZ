@@ -51,9 +51,11 @@ struct SaveToSpendView: View {
                 balanceSection
                     .padding(.top, 48)
 
-                // Intentional empty space
-                Spacer()
-                    .frame(height: 200)
+                // Lever track
+                LeverTrackView()
+                    .padding(.horizontal, 40)
+                    .padding(.top, 48)
+                    .padding(.bottom, 48)
 
                 // What shaped your balance
                 whatShapedSection

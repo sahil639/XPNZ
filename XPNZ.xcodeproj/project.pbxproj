@@ -25,6 +25,7 @@
 		E00000000000000000000100 /* ExpandedSpendCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000110 /* ExpandedSpendCard.swift */; };
 		E00000000000000000000101 /* HeaderIconsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000111 /* HeaderIconsView.swift */; };
 		E00000000000000000000102 /* SaveToSpendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000112 /* SaveToSpendView.swift */; };
+		E00000000000000000000103 /* LeverTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000113 /* LeverTrackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		E00000000000000000000110 /* ExpandedSpendCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedSpendCard.swift; sourceTree = "<group>"; };
 		E00000000000000000000111 /* HeaderIconsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderIconsView.swift; sourceTree = "<group>"; };
 		E00000000000000000000112 /* SaveToSpendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToSpendView.swift; sourceTree = "<group>"; };
+		E00000000000000000000113 /* LeverTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeverTrackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				E0000000000000000000001F /* TransactionListView.swift */,
 				E00000000000000000000110 /* ExpandedSpendCard.swift */,
 				E00000000000000000000111 /* HeaderIconsView.swift */,
+				E00000000000000000000113 /* LeverTrackView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -201,6 +204,7 @@
 				E00000000000000000000005 /* Currency.swift in Sources */,
 				E00000000000000000000006 /* HomeView.swift in Sources */,
 				E00000000000000000000102 /* SaveToSpendView.swift in Sources */,
+				E00000000000000000000103 /* LeverTrackView.swift in Sources */,
 				E00000000000000000000007 /* CalendarDateIcon.swift in Sources */,
 				E00000000000000000000008 /* AddTimeFrameButton.swift in Sources */,
 				E00000000000000000000009 /* SpendValueRow.swift in Sources */,
