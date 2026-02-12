@@ -47,8 +47,13 @@ struct SaveToSpendView: View {
                     .padding(.horizontal, horizontalPadding)
                     .padding(.top, 20)
 
-                // Large centered value
-                balanceSection
+                // Large centered value (odometer animation)
+                OdometerBalanceView(
+                    amount: balanceData.amount,
+                    percentage: balanceData.percentage,
+                    isPositive: balanceData.isPositive,
+                    description: "toward saving"
+                )
                     .padding(.top, 48)
 
                 // Lever track
@@ -106,33 +111,6 @@ struct SaveToSpendView: View {
                 }
             }
         }
-    }
-
-    private var balanceSection: some View {
-        VStack(spacing: 8) {
-            // Large dollar amount (reduced by 10%)
-            Text(balanceData.amount)
-                .font(.system(size: 65, weight: .bold, design: .rounded))
-                .foregroundColor(.primary)
-
-            // Percentage and description
-            HStack(spacing: 4) {
-                Text(balanceData.percentage)
-                    .font(.system(size: 17, weight: .semibold))
-                    .foregroundColor(balanceData.isPositive ? .green : .red)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(
-                        Capsule()
-                            .fill(balanceData.isPositive ? Color.green.opacity(0.15) : Color.red.opacity(0.15))
-                    )
-
-                Text("toward saving")
-                    .font(.system(size: 17, weight: .regular))
-                    .foregroundColor(.secondary)
-            }
-        }
-        .frame(maxWidth: .infinity)
     }
 
     private var whatShapedSection: some View {
