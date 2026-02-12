@@ -15,20 +15,27 @@ struct SaveToSpendView: View {
         case custom = "Custom"
     }
 
-    // Random values for each period
-    private var balanceData: (amount: String, percentage: String, isPositive: Bool) {
+    // Random values for each period — rawPercent is -100 (all spend) to +100 (all save)
+    private var balanceData: (amount: String, percentage: String, isPositive: Bool, rawPercent: CGFloat) {
         switch selectedPeriod {
         case .today:
-            return ("+$428", "+18%", true)
+            return ("+$428", "+18%", true, 18)
         case .weekly:
-            return ("-$85", "-5%", false)
+            return ("-$85", "-5%", false, -5)
         case .monthly:
-            return ("+$1,247", "+23%", true)
+            return ("+$1,247", "+23%", true, 23)
         case .yearly:
-            return ("+$8,935", "+42%", true)
+            return ("+$8,935", "+42%", true, 42)
         case .custom:
-            return ("-$312", "-12%", false)
+            return ("-$312", "-12%", false, -12)
         }
+    }
+
+    /// Bubble position: 0.0 = fully Spend (left), 1.0 = fully Save (right)
+    /// Maps rawPercent (-100...+100) to 0...1 range, with 0% at center (0.5)
+    private var bubblePosition: CGFloat {
+        let clamped = min(max(balanceData.rawPercent, -100), 100)
+        return (clamped + 100) / 200 // ⚡ EDITABLE: Position mapping formula
     }
 
     private var insightText: String {
@@ -56,8 +63,8 @@ struct SaveToSpendView: View {
                 )
                     .padding(.top, 48)
 
-                // Lever track
-                LeverTrackView()
+                // Lever track with bubble positioned by save/spend ratio
+                LeverTrackView(bubblePosition: bubblePosition)
                     .padding(.horizontal, 40)
                     .padding(.top, 48)
                     .padding(.bottom, 48)
@@ -120,35 +127,40 @@ struct SaveToSpendView: View {
                 .foregroundColor(.primary)
                 .padding(.bottom, 4)
 
-            VStack(spacing: 0) {
+            VStack(spacing: 2) { // ⚡ EDITABLE: Gap between rounded stat rows
                 StatRow(
                     icon: "arrow.up.circle",
                     label: "Top spending",
                     value: "$132",
-                    hasBackground: true
+                    hasBackground: true,
+                    position: .top
                 )
 
                 StatRow(
                     icon: "arrow.down.circle",
                     label: "Top saving",
                     value: "$250",
-                    hasBackground: false
+                    hasBackground: false,
+                    position: .middle
                 )
 
                 StatRow(
                     icon: "dollarsign.circle",
                     label: "Largest expense",
                     value: "$199",
-                    hasBackground: true
+                    hasBackground: true,
+                    position: .middle
                 )
 
                 StatRow(
                     icon: "hands.sparkles",
                     label: "Best saving move",
                     value: "$48",
-                    hasBackground: false
+                    hasBackground: false,
+                    position: .bottom
                 )
             }
+            .clipShape(RoundedRectangle(cornerRadius: 12)) // ⚡ EDITABLE: Overall list corner radius
         }
     }
 
@@ -172,6 +184,11 @@ struct StatRow: View {
     let label: String
     let value: String
     let hasBackground: Bool
+    var position: RowPosition = .middle // ⚡ EDITABLE: Row position for corner rounding
+
+    enum RowPosition {
+        case top, middle, bottom, alone
+    }
 
     var body: some View {
         HStack(spacing: 12) {
@@ -192,7 +209,7 @@ struct StatRow: View {
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 12)
-        .background(hasBackground ? Color(.systemGray6) : Color.clear)
+        .background(hasBackground ? Color(.systemGray6) : Color(.systemBackground))
     }
 }
 

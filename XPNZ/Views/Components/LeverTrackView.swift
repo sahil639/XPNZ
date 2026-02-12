@@ -1,7 +1,10 @@
 import SwiftUI
 
-/// A glossy 3D lever/slider track component — no thumb/bubble, just the track
+/// A glossy 3D lever/slider track component with glass bubble thumb
 struct LeverTrackView: View {
+    // ⚡ EDITABLE: Bubble position — 0.0 = fully Spend (left), 1.0 = fully Save (right)
+    var bubblePosition: CGFloat = 0.5
+
     // ⚡ EDITABLE: Track dimensions
     private let trackHeight: CGFloat = 56
     private let trackCornerRadius: CGFloat = 28 // Half of height for full pill shape
@@ -30,9 +33,14 @@ struct LeverTrackView: View {
     private let labelColor = Color(.systemGray)  // ⚡ EDITABLE: Label text color
     private let labelTopPadding: CGFloat = 14    // ⚡ EDITABLE: Space between track and labels
 
+    // ⚡ EDITABLE: Bubble dimensions (from Figma: 63x46, cornerRadius 60)
+    private let bubbleWidth: CGFloat = 63        // ⚡ EDITABLE: Bubble width
+    private let bubbleHeight: CGFloat = 46       // ⚡ EDITABLE: Bubble height
+    private let bubbleCornerRadius: CGFloat = 60 // ⚡ EDITABLE: Bubble corner radius (fully rounded)
+
     var body: some View {
         VStack(spacing: 0) {
-            // Lever track
+            // Lever track with bubble
             ZStack {
                 // Border frame — gradient stroke for beveled look
                 Capsule()
@@ -130,6 +138,9 @@ struct LeverTrackView: View {
                 dividerLines
                     .frame(height: trackHeight)
                     .clipShape(Capsule())
+
+                // Glass bubble thumb
+                glassBubble
             }
             // ⚡ EDITABLE: Soft layered drop shadows
             .shadow(color: shadowColor1, radius: shadowRadius1, x: 0, y: shadowY1)
@@ -151,6 +162,104 @@ struct LeverTrackView: View {
             .padding(.horizontal, 8)
         }
     }
+
+    // MARK: - Glass Bubble
+
+    private var glassBubble: some View {
+        GeometryReader { geometry in
+            let trackWidth = geometry.size.width
+            // ⚡ EDITABLE: Inset so bubble doesn't overflow past the capsule ends
+            let inset = bubbleWidth / 2 + borderWidth
+            let travelRange = trackWidth - inset * 2
+            let clampedPosition = min(max(bubblePosition, 0), 1)
+            let xOffset = inset + travelRange * clampedPosition
+
+            ZStack {
+                // Base glass shape — ultra thin material for refraction effect
+                RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                    .fill(.ultraThinMaterial) // ⚡ EDITABLE: Glass material (.ultraThinMaterial, .thinMaterial, .regularMaterial)
+                    .frame(width: bubbleWidth, height: bubbleHeight)
+
+                // Inner white glow — simulates Figma inner shadow (white, blur 11, 100%)
+                RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                    .stroke(
+                        // ⚡ EDITABLE: Inner glow gradient — bright white edge highlight
+                        LinearGradient(
+                            stops: [
+                                .init(color: Color.white.opacity(0.95), location: 0.0),  // ⚡ EDITABLE: Top glow intensity
+                                .init(color: Color.white.opacity(0.60), location: 0.25), // ⚡ EDITABLE: Upper glow
+                                .init(color: Color.white.opacity(0.20), location: 0.50), // ⚡ EDITABLE: Mid glow
+                                .init(color: Color.white.opacity(0.40), location: 0.75), // ⚡ EDITABLE: Lower glow
+                                .init(color: Color.white.opacity(0.70), location: 1.0),  // ⚡ EDITABLE: Bottom glow
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ),
+                        lineWidth: 2.5 // ⚡ EDITABLE: Inner glow stroke width
+                    )
+                    .frame(width: bubbleWidth, height: bubbleHeight)
+                    .blur(radius: 1.5) // ⚡ EDITABLE: Inner glow blur (simulates Figma inner shadow blur 11 at smaller scale)
+
+                // Top specular highlight — light from -45° angle
+                RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                    .fill(
+                        // ⚡ EDITABLE: Top-left specular highlight — simulates light at -45°
+                        LinearGradient(
+                            stops: [
+                                .init(color: Color.white.opacity(0.70), location: 0.0),  // ⚡ EDITABLE: Peak specular
+                                .init(color: Color.white.opacity(0.35), location: 0.15), // ⚡ EDITABLE: Specular mid
+                                .init(color: Color.white.opacity(0.10), location: 0.30), // ⚡ EDITABLE: Specular fade
+                                .init(color: Color.clear, location: 0.50),                // ⚡ EDITABLE: Fade to clear
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .frame(width: bubbleWidth, height: bubbleHeight)
+
+                // Bottom edge subtle reflection
+                RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                    .fill(
+                        // ⚡ EDITABLE: Bottom reflection — subtle ground reflection
+                        LinearGradient(
+                            stops: [
+                                .init(color: Color.clear, location: 0.60),                // ⚡ EDITABLE: Reflection start
+                                .init(color: Color.white.opacity(0.08), location: 0.80),  // ⚡ EDITABLE: Subtle reflection
+                                .init(color: Color.white.opacity(0.15), location: 1.0),   // ⚡ EDITABLE: Bottom edge reflection
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .frame(width: bubbleWidth, height: bubbleHeight)
+
+                // Outer edge definition — very subtle dark outline
+                RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                    .strokeBorder(
+                        // ⚡ EDITABLE: Outer edge — subtle dark ring for definition
+                        LinearGradient(
+                            stops: [
+                                .init(color: Color.white.opacity(0.50), location: 0.0),  // ⚡ EDITABLE: Top edge (bright)
+                                .init(color: Color.white.opacity(0.15), location: 0.40), // ⚡ EDITABLE: Mid edge
+                                .init(color: Color.black.opacity(0.08), location: 0.70), // ⚡ EDITABLE: Lower edge (dark)
+                                .init(color: Color.black.opacity(0.12), location: 1.0),  // ⚡ EDITABLE: Bottom edge
+                            ],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        ),
+                        lineWidth: 0.5 // ⚡ EDITABLE: Outer edge thickness
+                    )
+                    .frame(width: bubbleWidth, height: bubbleHeight)
+            }
+            // ⚡ EDITABLE: Bubble drop shadow (Figma: X:0, Y:2, Blur:2, #000 12%)
+            .shadow(color: Color.black.opacity(0.12), radius: 2, x: 0, y: 2)
+            .position(x: xOffset, y: geometry.size.height / 2)
+            .animation(.timingCurve(0.25, 0.1, 0.25, 1.0, duration: 0.6), value: bubblePosition) // ⚡ EDITABLE: Bubble slide animation — ease (fast start, slow settle)
+        }
+        .frame(height: trackHeight + borderWidth * 2)
+    }
+
+    // MARK: - Divider Lines
 
     private var dividerLines: some View {
         GeometryReader { geometry in
@@ -223,7 +332,7 @@ extension Color {
         Color(.systemBackground)
             .ignoresSafeArea()
 
-        LeverTrackView()
+        LeverTrackView(bubblePosition: 0.65)
             .padding(.horizontal, 40)
     }
 }

@@ -71,7 +71,7 @@ struct OdometerBalanceView: View {
     }
 }
 
-/// A single odometer digit that scrolls vertically through 0-9
+/// A single odometer digit that scrolls vertically through 0-9 with motion blur
 struct OdometerDigitView: View {
     let digit: Int
     let animation: Animation
@@ -81,7 +81,12 @@ struct OdometerDigitView: View {
     private let fontWeight: Font.Weight = .bold // ⚡ EDITABLE: Digit font weight
     private let clipHeight: CGFloat = 78        // ⚡ EDITABLE: Visible height of one digit (controls clipping)
 
+    // ⚡ EDITABLE: Motion blur parameters
+    private let motionBlurAmount: CGFloat = 2   // ⚡ EDITABLE: Max vertical blur during animation
+    private let blurAnimationDuration: Double = 0.5 // ⚡ EDITABLE: How long before blur starts fading
+
     @State private var animatedDigit: Int = 0
+    @State private var isAnimating: Bool = false
 
     var body: some View {
         // Stack of digits 0-9, offset to show the current one
@@ -98,14 +103,29 @@ struct OdometerDigitView: View {
         }
         .frame(height: clipHeight) // ⚡ EDITABLE: Clip to single digit height
         .clipped()
+        // ⚡ EDITABLE: Motion blur — vertical blur during digit roll for realism
+        .blur(radius: isAnimating ? motionBlurAmount : 0, opaque: false)
         .onAppear {
-            withAnimation(animation) {
-                animatedDigit = digit
-            }
+            triggerAnimation(to: digit)
         }
         .onChange(of: digit) { _, newValue in
-            withAnimation(animation) {
-                animatedDigit = newValue
+            triggerAnimation(to: newValue)
+        }
+    }
+
+    private func triggerAnimation(to newValue: Int) {
+        // Start subtle motion blur
+        withAnimation(.easeIn(duration: 0.1)) { // ⚡ EDITABLE: Blur onset speed
+            isAnimating = true
+        }
+        // Animate the digit scroll
+        withAnimation(animation) {
+            animatedDigit = newValue
+        }
+        // Fade out motion blur smoothly over remaining 800ms window
+        DispatchQueue.main.asyncAfter(deadline: .now() + blurAnimationDuration) {
+            withAnimation(.easeOut(duration: 0.3)) { // ⚡ EDITABLE: Blur fade-out speed
+                isAnimating = false
             }
         }
     }
