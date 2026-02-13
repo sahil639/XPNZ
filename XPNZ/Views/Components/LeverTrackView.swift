@@ -168,95 +168,29 @@ struct LeverTrackView: View {
     private var glassBubble: some View {
         GeometryReader { geometry in
             let trackWidth = geometry.size.width
-            // ⚡ EDITABLE: Inset so bubble doesn't overflow past the capsule ends
-            let inset = bubbleWidth / 2 + borderWidth
+            // ⚡ EDITABLE: Inset so bubble stays within the lever capsule
+            let inset = bubbleWidth / 2 + borderWidth + 2 // ⚡ EDITABLE: Edge padding
             let travelRange = trackWidth - inset * 2
             let clampedPosition = min(max(bubblePosition, 0), 1)
             let xOffset = inset + travelRange * clampedPosition
 
-            ZStack {
-                // Base glass shape — ultra thin material for refraction effect
-                RoundedRectangle(cornerRadius: bubbleCornerRadius)
-                    .fill(.ultraThinMaterial) // ⚡ EDITABLE: Glass material (.ultraThinMaterial, .thinMaterial, .regularMaterial)
-                    .frame(width: bubbleWidth, height: bubbleHeight)
-
-                // Inner white glow — simulates Figma inner shadow (white, blur 11, 100%)
-                RoundedRectangle(cornerRadius: bubbleCornerRadius)
-                    .stroke(
-                        // ⚡ EDITABLE: Inner glow gradient — bright white edge highlight
-                        LinearGradient(
-                            stops: [
-                                .init(color: Color.white.opacity(0.95), location: 0.0),  // ⚡ EDITABLE: Top glow intensity
-                                .init(color: Color.white.opacity(0.60), location: 0.25), // ⚡ EDITABLE: Upper glow
-                                .init(color: Color.white.opacity(0.20), location: 0.50), // ⚡ EDITABLE: Mid glow
-                                .init(color: Color.white.opacity(0.40), location: 0.75), // ⚡ EDITABLE: Lower glow
-                                .init(color: Color.white.opacity(0.70), location: 1.0),  // ⚡ EDITABLE: Bottom glow
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        ),
-                        lineWidth: 2.5 // ⚡ EDITABLE: Inner glow stroke width
-                    )
-                    .frame(width: bubbleWidth, height: bubbleHeight)
-                    .blur(radius: 1.5) // ⚡ EDITABLE: Inner glow blur (simulates Figma inner shadow blur 11 at smaller scale)
-
-                // Top specular highlight — light from -45° angle
-                RoundedRectangle(cornerRadius: bubbleCornerRadius)
-                    .fill(
-                        // ⚡ EDITABLE: Top-left specular highlight — simulates light at -45°
-                        LinearGradient(
-                            stops: [
-                                .init(color: Color.white.opacity(0.70), location: 0.0),  // ⚡ EDITABLE: Peak specular
-                                .init(color: Color.white.opacity(0.35), location: 0.15), // ⚡ EDITABLE: Specular mid
-                                .init(color: Color.white.opacity(0.10), location: 0.30), // ⚡ EDITABLE: Specular fade
-                                .init(color: Color.clear, location: 0.50),                // ⚡ EDITABLE: Fade to clear
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                    .frame(width: bubbleWidth, height: bubbleHeight)
-
-                // Bottom edge subtle reflection
-                RoundedRectangle(cornerRadius: bubbleCornerRadius)
-                    .fill(
-                        // ⚡ EDITABLE: Bottom reflection — subtle ground reflection
-                        LinearGradient(
-                            stops: [
-                                .init(color: Color.clear, location: 0.60),                // ⚡ EDITABLE: Reflection start
-                                .init(color: Color.white.opacity(0.08), location: 0.80),  // ⚡ EDITABLE: Subtle reflection
-                                .init(color: Color.white.opacity(0.15), location: 1.0),   // ⚡ EDITABLE: Bottom edge reflection
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
-                    )
-                    .frame(width: bubbleWidth, height: bubbleHeight)
-
-                // Outer edge definition — very subtle dark outline
-                RoundedRectangle(cornerRadius: bubbleCornerRadius)
-                    .strokeBorder(
-                        // ⚡ EDITABLE: Outer edge — subtle dark ring for definition
-                        LinearGradient(
-                            stops: [
-                                .init(color: Color.white.opacity(0.50), location: 0.0),  // ⚡ EDITABLE: Top edge (bright)
-                                .init(color: Color.white.opacity(0.15), location: 0.40), // ⚡ EDITABLE: Mid edge
-                                .init(color: Color.black.opacity(0.08), location: 0.70), // ⚡ EDITABLE: Lower edge (dark)
-                                .init(color: Color.black.opacity(0.12), location: 1.0),  // ⚡ EDITABLE: Bottom edge
-                            ],
-                            startPoint: .top,
-                            endPoint: .bottom
-                        ),
-                        lineWidth: 0.5 // ⚡ EDITABLE: Outer edge thickness
-                    )
-                    .frame(width: bubbleWidth, height: bubbleHeight)
-            }
-            // ⚡ EDITABLE: Bubble drop shadow (Figma: X:0, Y:2, Blur:2, #000 12%)
-            .shadow(color: Color.black.opacity(0.12), radius: 2, x: 0, y: 2)
-            .position(x: xOffset, y: geometry.size.height / 2)
-            .animation(.timingCurve(0.25, 0.1, 0.25, 1.0, duration: 0.6), value: bubblePosition) // ⚡ EDITABLE: Bubble slide animation — ease (fast start, slow settle)
+            // iOS 26 Liquid Glass bubble — 2% white fill + .glassEffect refraction
+            liquidGlassBubble
+                // ⚡ EDITABLE: Drop shadow (Figma: X:0, Y:2, Blur:2, #000000 12%)
+                .shadow(color: Color.black.opacity(0.12), radius: 2, x: 0, y: 2)
+                .position(x: xOffset, y: geometry.size.height / 2)
+                .animation(.timingCurve(0.25, 0.1, 0.25, 1.0, duration: 0.6), value: bubblePosition) // ⚡ EDITABLE: Slide animation
         }
         .frame(height: trackHeight + borderWidth * 2)
+    }
+
+    private var liquidGlassBubble: some View {
+        // Liquid Glass bubble — native refraction via GlassEffectContainer
+        GlassEffectContainer {
+            RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                .frame(width: bubbleWidth, height: bubbleHeight)
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: bubbleCornerRadius)) // ⚡ EDITABLE: Liquid Glass material
+        }
     }
 
     // MARK: - Divider Lines

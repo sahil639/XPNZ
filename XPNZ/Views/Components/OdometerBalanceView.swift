@@ -82,8 +82,8 @@ struct OdometerDigitView: View {
     private let clipHeight: CGFloat = 78        // ⚡ EDITABLE: Visible height of one digit (controls clipping)
 
     // ⚡ EDITABLE: Motion blur parameters
-    private let motionBlurAmount: CGFloat = 2   // ⚡ EDITABLE: Max vertical blur during animation
-    private let blurAnimationDuration: Double = 0.5 // ⚡ EDITABLE: How long before blur starts fading
+    private let motionBlurAmount: CGFloat = 6   // ⚡ EDITABLE: Max vertical blur during animation
+    private let blurAnimationDuration: Double = 0.4 // ⚡ EDITABLE: How long the blur lasts
 
     @State private var animatedDigit: Int = 0
     @State private var isAnimating: Bool = false
@@ -114,17 +114,17 @@ struct OdometerDigitView: View {
     }
 
     private func triggerAnimation(to newValue: Int) {
-        // Start subtle motion blur
-        withAnimation(.easeIn(duration: 0.1)) { // ⚡ EDITABLE: Blur onset speed
+        // Start motion blur
+        withAnimation(.easeIn(duration: 0.08)) { // ⚡ EDITABLE: Blur onset speed
             isAnimating = true
         }
         // Animate the digit scroll
         withAnimation(animation) {
             animatedDigit = newValue
         }
-        // Fade out motion blur smoothly over remaining 800ms window
+        // Fade out motion blur as digit settles
         DispatchQueue.main.asyncAfter(deadline: .now() + blurAnimationDuration) {
-            withAnimation(.easeOut(duration: 0.3)) { // ⚡ EDITABLE: Blur fade-out speed
+            withAnimation(.easeOut(duration: 0.25)) { // ⚡ EDITABLE: Blur fade-out speed
                 isAnimating = false
             }
         }
