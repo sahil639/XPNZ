@@ -177,19 +177,37 @@ struct LeverTrackView: View {
             // iOS 26 Liquid Glass bubble — 2% white fill + .glassEffect refraction
             liquidGlassBubble
                 // ⚡ EDITABLE: Drop shadow (Figma: X:0, Y:2, Blur:2, #000000 12%)
-                .shadow(color: Color.black.opacity(0.12), radius: 2, x: 0, y: 2)
+                .shadow(color: Color.black.opacity(0.02), radius: 2, x: 0, y: 4)
                 .position(x: xOffset, y: geometry.size.height / 2)
                 .animation(.timingCurve(0.25, 0.1, 0.25, 1.0, duration: 0.6), value: bubblePosition) // ⚡ EDITABLE: Slide animation
         }
         .frame(height: trackHeight + borderWidth * 2)
     }
 
+    // MARK: - Liquid Glass Bubble Design
+    // ⚡ EDIT THIS to customize the bubble appearance.
+    //   - bubbleWidth: 63, bubbleHeight: 46, bubbleCornerRadius: 60 (defined above)
+    //   - Add .fill(), .stroke(), .overlay(), .shadow() etc. inside the container
+    //   - .glassEffect(.regular, in:) applies the iOS 26 Liquid Glass refraction
+    //   - Try .glassEffect(.clear, in:) for a more transparent variant
     private var liquidGlassBubble: some View {
-        // Liquid Glass bubble — native refraction via GlassEffectContainer
         GlassEffectContainer {
+            // ⚡ BUBBLE SHAPE — edit fill, stroke, overlays here
             RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                // ⚡ FILL: change to Color.white.opacity(0.06) etc.
                 .frame(width: bubbleWidth, height: bubbleHeight)
-                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: bubbleCornerRadius)) // ⚡ EDITABLE: Liquid Glass material
+                // ⚡ INNER SHADOW — change Color.yellow, radius, x, y to adjust
+                .overlay(
+                    RoundedRectangle(cornerRadius: bubbleCornerRadius)
+                        .stroke(Color.white, lineWidth: 4) // ⚡ EDITABLE: shadow color & thickness
+                        .blur(radius: 2)                     // ⚡ EDITABLE: blur spread
+                        .offset(x: 0, y: 4)                  // ⚡ EDITABLE: shadow offset
+                        .blendMode(.overlay)
+                    
+                        .clipShape(RoundedRectangle(cornerRadius: bubbleCornerRadius))
+                )
+                // ⚡ GLASS EFFECT — change .regular to .clear, or remove entirely
+                .glassEffect(.clear, in: RoundedRectangle(cornerRadius: bubbleCornerRadius))
         }
     }
 
@@ -201,9 +219,9 @@ struct LeverTrackView: View {
             let height = geometry.size.height
 
             // ⚡ EDITABLE: Divider positions — 2 pairs evenly spaced
-            let leftCenter = width * 0.33   // ⚡ EDITABLE: Left pair center position
-            let rightCenter = width * 0.67  // ⚡ EDITABLE: Right pair center position
-            let halfGap = dividerPairGap / 2
+            let leftCenter = width * 0.25   // ⚡ EDITABLE: Left pair center position
+            let rightCenter = width * 0.75  // ⚡ EDITABLE: Right pair center position
+            let halfGap = dividerPairGap / 2.5
 
             ZStack {
                 // Left pair — line 1
