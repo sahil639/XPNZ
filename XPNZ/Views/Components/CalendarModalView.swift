@@ -68,8 +68,8 @@ struct CalendarModalView: View {
 
     var body: some View {
         ZStack {
-            // Dimmed blurred background — tap to dismiss
-            Color.black.opacity(0.3)
+            // Light dim — tap to dismiss (blur applied by HomeView)
+            Color.black.opacity(0.15)
                 .ignoresSafeArea()
                 .onTapGesture { isPresented = false }
 
@@ -117,7 +117,7 @@ struct CalendarModalView: View {
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .padding(.horizontal, horizontalInset)
         }
-        .background(BackdropBlurView().ignoresSafeArea()) // Native blur behind overlay
+        // Blur is handled by HomeView — no extra backdrop needed
         .animation(.easeInOut(duration: 0.25), value: selectedDate)
     }
 
@@ -190,14 +190,6 @@ struct CalendarModalView: View {
     }
 }
 
-/// UIViewRepresentable that applies a native UIVisualEffectView blur behind the modal
-private struct BackdropBlurView: UIViewRepresentable {
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        UIVisualEffectView(effect: UIBlurEffect(style: .systemThinMaterial))
-    }
-
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
-}
 
 #Preview {
     CalendarModalView(isPresented: .constant(true))

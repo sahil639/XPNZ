@@ -59,7 +59,7 @@ struct HomeView: View {
             ZStack {
                 // Main content
                 mainContent
-                    .blur(radius: showingTimeFrameSheet ? 3 : 0)
+                    .blur(radius: (showingTimeFrameSheet || showingCalendarModal) ? 3 : 0)
 
                 // Blur overlay when sheet is showing (handled by sheet presentation)
             }
