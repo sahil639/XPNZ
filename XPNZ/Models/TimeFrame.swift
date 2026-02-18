@@ -42,10 +42,10 @@ enum TimeFrame: String, CaseIterable, Identifiable {
     /// Font weight for visual hierarchy
     var fontWeight: Font.Weight {
         switch self {
-        case .year: return .semibold
-        case .month: return .semibold
-        case .week: return .medium
-        case .day: return .medium
+        case .year: return .heavy
+        case .month: return .heavy
+        case .week: return .heavy
+        case .day: return .heavy
         }
     }
     

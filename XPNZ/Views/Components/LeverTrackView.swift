@@ -81,6 +81,7 @@ struct LeverTrackView: View {
                         )
                     )
                     .frame(height: trackHeight)
+                    .padding(.horizontal, borderWidth)
 
                 // Inner shadow — top glossy highlight
                 Capsule()
@@ -98,6 +99,7 @@ struct LeverTrackView: View {
                         )
                     )
                     .frame(height: trackHeight)
+                    .padding(.horizontal, borderWidth)
 
                 // Inner shadow — bottom depth
                 Capsule()
@@ -115,6 +117,7 @@ struct LeverTrackView: View {
                         )
                     )
                     .frame(height: trackHeight)
+                    .padding(.horizontal, borderWidth)
 
                 // Inner edge ring — subtle dark line along the inside of the border
                 Capsule()
@@ -133,6 +136,7 @@ struct LeverTrackView: View {
                         lineWidth: 1.5 // ⚡ EDITABLE: Inner edge ring thickness
                     )
                     .frame(height: trackHeight)
+                    .padding(.horizontal, borderWidth)
 
                 // Divider tick marks — 2 pairs (4 lines total)
                 dividerLines

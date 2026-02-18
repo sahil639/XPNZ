@@ -15,7 +15,7 @@ struct SpendValueRow: View {
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 // Currency symbol (smaller, lighter)
                 Text(currency.symbol)
-                    .font(.system(size: spendData.timeFrame.fontSize * 0.5, weight: .regular, design: .rounded))
+                    .font(.system(size: spendData.timeFrame.fontSize * 0.5, weight: .semibold, design: .rounded))
                     .foregroundColor(.primary.opacity(effectiveOpacity * 0.7))
                 
                 // Amount
@@ -25,7 +25,7 @@ struct SpendValueRow: View {
                 
                 // Time frame suffix (smaller, lighter)
                 Text(spendData.timeFrame.displaySuffix)
-                    .font(.system(size: spendData.timeFrame.fontSize * 0.5, weight: .regular, design: .rounded))
+                    .font(.system(size: spendData.timeFrame.fontSize * 0.5, weight: .semibold, design: .rounded))
                     .foregroundColor(.primary.opacity(effectiveOpacity * 0.6))
             }
         }
