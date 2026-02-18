@@ -16,6 +16,9 @@ struct HomeView: View {
     /// Controls navigation to Save-to-Spend screen
     @State private var showingSaveToSpend = false
 
+    /// Controls calendar modal pop-up
+    @State private var showingCalendarModal = false
+
     /// Current currency (structured for future switching)
     private let currency: Currency = CurrencySettings.current
     
@@ -67,6 +70,13 @@ struct HomeView: View {
             .sheet(isPresented: $showingTimeFrameSheet) {
                 TimeFrameSheet(enabledTimeFrames: $enabledTimeFrames)
             }
+            .overlay {
+                if showingCalendarModal {
+                    CalendarModalView(isPresented: $showingCalendarModal)
+                        .transition(.opacity)
+                }
+            }
+            .animation(.easeInOut(duration: 0.25), value: showingCalendarModal)
         }
     }
     
@@ -90,7 +100,11 @@ struct HomeView: View {
     
     private var headerView: some View {
         HStack {
-            CalendarDateIcon(date: Date())
+            Button {
+                showingCalendarModal.toggle()
+            } label: {
+                CalendarDateIcon(date: Date())
+            }
 
             Spacer()
 

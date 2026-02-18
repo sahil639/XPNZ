@@ -4,7 +4,6 @@ import SwiftUI
 struct SaveToSpendView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var selectedPeriod: TimePeriod = .today
-
     private let horizontalPadding: CGFloat = 20
 
     enum TimePeriod: String, CaseIterable {
