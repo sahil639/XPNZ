@@ -56,12 +56,23 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack {
+            ZStack(alignment: .bottomTrailing) {
                 // Main content
                 mainContent
                     .blur(radius: (showingTimeFrameSheet || showingCalendarModal) ? 3 : 0)
 
-                // Blur overlay when sheet is showing (handled by sheet presentation)
+                // FAB — profile button
+                Button {
+                    // TODO: profile action
+                } label: {
+                    Image(systemName: "person.crop.circle")
+                        .font(.system(size: 28))
+                        .foregroundColor(Color(.darkGray))
+                        .frame(width: 52, height: 52)
+                        .glassEffect(.regular, in: Circle())
+                }
+                .padding(.trailing, 20)
+                .padding(.bottom, 32)
             }
             .background(Color(.systemBackground))
             .navigationDestination(isPresented: $showingSaveToSpend) {
