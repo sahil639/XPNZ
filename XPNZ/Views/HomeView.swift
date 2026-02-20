@@ -88,7 +88,7 @@ struct HomeView: View {
                         .font(.system(size: 28))
                         .foregroundColor(isColorMode ? .white : Color(.darkGray))
                         .frame(width: 52, height: 52)
-                        .glassEffect(.regular, in: Circle())
+                        .glassEffect(.clear, in: Circle())
                 }
                 .padding(.trailing, 20)
                 .padding(.bottom, 32)

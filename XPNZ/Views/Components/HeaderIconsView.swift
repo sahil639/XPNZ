@@ -10,7 +10,9 @@ struct HeaderIconsView: View {
             // Bandage icon - opens Save-to-Spend
             Button(action: onBandageTap) {
                 Image(systemName: "bandage")
-                    .font(.system(size: 20, weight: .medium))
+                    .font(.system(size: 28
+                                  
+                                  , weight: .medium))
                     .foregroundColor(Color(.systemGray))
             }
             .buttonStyle(.plain)
@@ -18,7 +20,7 @@ struct HeaderIconsView: View {
             // Clock/time frame icon
             Button(action: onTimeFrameTap) {
                 Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
-                    .font(.system(size: 20, weight: .medium))
+                    .font(.system(size: 28, weight: .medium))
                     .foregroundColor(Color(.systemGray))
             }
             .buttonStyle(.plain)
