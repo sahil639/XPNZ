@@ -19,6 +19,23 @@ struct HomeView: View {
     /// Controls calendar modal pop-up
     @State private var showingCalendarModal = false
 
+    /// FAB color cycle index (0 = default, 1-6 = colors)
+    @State private var colorCycleIndex = 0
+
+    private let bgColors: [Color] = [
+        Color(red: 0.2, green: 0.7, blue: 0.2),     // green
+        Color(red: 1.0, green: 0.55, blue: 0.25),    // papaya orange
+        Color(red: 0.9, green: 0.75, blue: 0.0),     // deep yellow
+        Color(red: 0.15, green: 0.2, blue: 0.55),    // dark blue
+        Color(red: 0.5, green: 0.2, blue: 0.6),      // purple
+        Color(red: 1.0, green: 0.25, blue: 0.5),     // hot pink
+    ]
+
+    private var isColorMode: Bool { colorCycleIndex > 0 }
+    private var currentBgColor: Color {
+        isColorMode ? bgColors[colorCycleIndex - 1] : Color(.systemBackground)
+    }
+
     /// Current currency (structured for future switching)
     private let currency: Currency = CurrencySettings.current
     
@@ -61,20 +78,22 @@ struct HomeView: View {
                 mainContent
                     .blur(radius: (showingTimeFrameSheet || showingCalendarModal) ? 3 : 0)
 
-                // FAB — profile button
+                // FAB — profile button (cycles through colors)
                 Button {
-                    // TODO: profile action
+                    withAnimation(.easeInOut(duration: 0.3)) {
+                        colorCycleIndex = (colorCycleIndex + 1) % (bgColors.count + 1)
+                    }
                 } label: {
                     Image(systemName: "person.crop.circle")
                         .font(.system(size: 28))
-                        .foregroundColor(Color(.darkGray))
+                        .foregroundColor(isColorMode ? .white : Color(.darkGray))
                         .frame(width: 52, height: 52)
                         .glassEffect(.regular, in: Circle())
                 }
                 .padding(.trailing, 20)
                 .padding(.bottom, 32)
             }
-            .background(Color(.systemBackground))
+            .background(currentBgColor)
             .navigationDestination(isPresented: $showingSaveToSpend) {
                 SaveToSpendView()
             }
@@ -156,6 +175,7 @@ struct HomeView: View {
                         isExpanded: false,
                         isDimmed: expandedTimeFrame != nil,
                         isPrimaryContext: isYearPrimaryContext(for: spendData.timeFrame),
+                        textColor: isColorMode ? .white : .primary,
                         onTap: {
                             withAnimation(springAnimation) {
                                 if expandedTimeFrame == spendData.timeFrame {

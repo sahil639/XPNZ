@@ -8,6 +8,7 @@ struct SpendValueRow: View {
     let isExpanded: Bool
     let isDimmed: Bool
     let isPrimaryContext: Bool
+    var textColor: Color = .primary // override for green mode
     let onTap: () -> Void
     
     var body: some View {
@@ -16,17 +17,17 @@ struct SpendValueRow: View {
                 // Currency symbol (smaller, lighter)
                 Text(currency.symbol)
                     .font(.system(size: spendData.timeFrame.fontSize * 0.5, weight: .semibold, design: .rounded))
-                    .foregroundColor(.primary.opacity(effectiveOpacity * 0.7))
-                
+                    .foregroundColor(textColor.opacity(effectiveOpacity * 0.7))
+
                 // Amount
                 Text(spendData.formattedAmount)
                     .font(.system(size: spendData.timeFrame.fontSize, weight: spendData.timeFrame.fontWeight, design: .rounded))
-                    .foregroundColor(.primary.opacity(effectiveOpacity))
-                
+                    .foregroundColor(textColor.opacity(effectiveOpacity))
+
                 // Time frame suffix (smaller, lighter)
                 Text(spendData.timeFrame.displaySuffix)
                     .font(.system(size: spendData.timeFrame.fontSize * 0.5, weight: .semibold, design: .rounded))
-                    .foregroundColor(.primary.opacity(effectiveOpacity * 0.6))
+                    .foregroundColor(textColor.opacity(effectiveOpacity * 0.6))
             }
         }
         .buttonStyle(.plain)
