@@ -85,13 +85,13 @@ struct HomeView: View {
                     }
                 } label: {
                     Image(systemName: "person.crop.circle")
-                        .font(.system(size: 28))
+                        .font(.system(size: 32))
                         .foregroundColor(isColorMode ? .white : Color(.darkGray))
-                        .frame(width: 52, height: 52)
+                        .frame(width: 64, height: 64)
                         .glassEffect(.clear, in: Circle())
                 }
                 .padding(.trailing, 20)
-                .padding(.bottom, 32)
+                .padding(.bottom, 0)
             }
             .background(currentBgColor)
             .navigationDestination(isPresented: $showingSaveToSpend) {
@@ -144,7 +144,8 @@ struct HomeView: View {
                 },
                 onTimeFrameTap: {
                     showingTimeFrameSheet = true
-                }
+                },
+                iconColor: isColorMode ? .white : Color(.systemGray)
             )
         }
     }

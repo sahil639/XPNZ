@@ -4,6 +4,7 @@ import SwiftUI
 struct HeaderIconsView: View {
     let onBandageTap: () -> Void
     let onTimeFrameTap: () -> Void
+    var iconColor: Color = Color(.systemGray)
 
     var body: some View {
         HStack(spacing: 16) {
@@ -13,7 +14,7 @@ struct HeaderIconsView: View {
                     .font(.system(size: 28
                                   
                                   , weight: .medium))
-                    .foregroundColor(Color(.systemGray))
+                    .foregroundColor(iconColor)
             }
             .buttonStyle(.plain)
 
@@ -21,7 +22,7 @@ struct HeaderIconsView: View {
             Button(action: onTimeFrameTap) {
                 Image(systemName: "clock.arrow.trianglehead.counterclockwise.rotate.90")
                     .font(.system(size: 28, weight: .medium))
-                    .foregroundColor(Color(.systemGray))
+                    .foregroundColor(iconColor)
             }
             .buttonStyle(.plain)
         }
