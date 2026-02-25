@@ -73,25 +73,32 @@ struct HomeView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .bottomTrailing) {
+            ZStack(alignment: .bottom) {
                 // Main content
                 mainContent
                     .blur(radius: (showingTimeFrameSheet || showingCalendarModal) ? 3 : 0)
 
-                // FAB — profile button (cycles through colors)
-                Button {
-                    withAnimation(.easeInOut(duration: 0.3)) {
-                        colorCycleIndex = (colorCycleIndex + 1) % (bgColors.count + 1)
+                // Bottom nav bar with glass pill + FAB
+                BottomNavBar(
+                    isColorMode: isColorMode,
+                    onHomeTap: {
+                        // Already on home
+                    },
+                    onSpendTap: {
+                        // TODO: spend tab
+                    },
+                    onSaveTap: {
+                        showingSaveToSpend = true
+                    },
+                    onAnalyticsTap: {
+                        // TODO: analytics tab
+                    },
+                    onFabTap: {
+                        withAnimation(.easeInOut(duration: 0.3)) {
+                            colorCycleIndex = (colorCycleIndex + 1) % (bgColors.count + 1)
+                        }
                     }
-                } label: {
-                    Image(systemName: "person.crop.circle")
-                        .font(.system(size: 32))
-                        .foregroundColor(isColorMode ? .white : Color(.darkGray))
-                        .frame(width: 64, height: 64)
-                        .glassEffect(.clear, in: Circle())
-                }
-                .padding(.trailing, 20)
-                .padding(.bottom, 0)
+                )
             }
             .background(currentBgColor)
             .navigationDestination(isPresented: $showingSaveToSpend) {

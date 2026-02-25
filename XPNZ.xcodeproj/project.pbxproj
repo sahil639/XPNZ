@@ -28,6 +28,7 @@
 		E00000000000000000000103 /* LeverTrackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000113 /* LeverTrackView.swift */; };
 		E00000000000000000000104 /* OdometerBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000114 /* OdometerBalanceView.swift */; };
 		E00000000000000000000105 /* CalendarModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000115 /* CalendarModalView.swift */; };
+		E00000000000000000000106 /* BottomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00000000000000000000116 /* BottomNavBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		E00000000000000000000113 /* LeverTrackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeverTrackView.swift; sourceTree = "<group>"; };
 		E00000000000000000000114 /* OdometerBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OdometerBalanceView.swift; sourceTree = "<group>"; };
 		E00000000000000000000115 /* CalendarModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModalView.swift; sourceTree = "<group>"; };
+		E00000000000000000000116 /* BottomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				E00000000000000000000113 /* LeverTrackView.swift */,
 				E00000000000000000000114 /* OdometerBalanceView.swift */,
 				E00000000000000000000115 /* CalendarModalView.swift */,
+				E00000000000000000000116 /* BottomNavBar.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				E00000000000000000000101 /* HeaderIconsView.swift in Sources */,
 				E00000000000000000000104 /* OdometerBalanceView.swift in Sources */,
 				E00000000000000000000105 /* CalendarModalView.swift in Sources */,
+				E00000000000000000000106 /* BottomNavBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
